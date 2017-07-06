@@ -1,5 +1,6 @@
 import { join } from 'path';
 import { SeedAdvancedConfig } from './seed-advanced.config';
+import {ExtendPackages} from "./seed.config.interfaces";
 // import { ExtendPackages } from './seed.config.interfaces';
 
 /**
@@ -9,7 +10,7 @@ import { SeedAdvancedConfig } from './seed-advanced.config';
 export class ProjectConfig extends SeedAdvancedConfig {
 
   PROJECT_TASKS_DIR = join(process.cwd(), this.TOOLS_DIR, 'tasks', 'project');
-  
+
   constructor() {
     super();
     // this.APP_TITLE = 'Put name of your app here';
@@ -19,9 +20,11 @@ export class ProjectConfig extends SeedAdvancedConfig {
     // this.TYPED_COMPILE_INTERVAL = 5;
 
     // Add `NPM` third-party libraries to be injected/bundled.
+
     this.NPM_DEPENDENCIES = [
       ...this.NPM_DEPENDENCIES,
-      // {src: 'jquery/dist/jquery.min.js', inject: 'libs'},
+      /* Select a pre-built Material theme */
+      {src: '@angular/material/prebuilt-themes/indigo-pink.css', inject: true}
     ];
 
     // Add `local` third-party libraries to be injected/bundled.
@@ -49,6 +52,25 @@ export class ProjectConfig extends SeedAdvancedConfig {
     // }];
     //
     // this.addPackagesBundles(additionalPackages);
+
+    let additionalPackages: ExtendPackages[] = [{
+      name:'@angular/material',
+      path:'node_modules/@angular/material/bundles/material.umd.js',
+      packageMeta:{
+        defaultExtension: 'js'
+      },
+    },
+      {
+        name:'@angular/cdk',
+        path:'node_modules/@angular/cdk/bundles/cdk.umd.js',
+        packageMeta:{
+          defaultExtension: 'js'
+        },
+      }
+    ];
+
+    this.addPackagesBundles(additionalPackages);
+
 
     /* Add proxy middleware */
     // this.PROXY_MIDDLEWARE = [

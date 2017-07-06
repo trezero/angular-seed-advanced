@@ -25,6 +25,8 @@ import { AppReducer } from './app/modules/ngrx/index';
 import {WinAppComponent} from "./app/shared/win.app.component";
 import {MainComponent} from "./app/shared/main/main.component";
 
+import { MdIconModule, MdToolbarModule } from '@angular/material';
+
 
 // config
 Config.PLATFORM_TARGET = Config.PLATFORMS.WEB;
@@ -68,6 +70,8 @@ if (String('<%= BUILD_TYPE %>') === 'dev') {
 
 @NgModule({
   imports: [
+    MdToolbarModule,
+    MdIconModule,
     BrowserModule,
     CoreModule.forRoot([
       { provide: WindowService, useFactory: (win) },
