@@ -1,0 +1,42 @@
+<!--<intro-splash></intro-splash>-->
+
+<!--<ngrx-store-log-monitor toggleCommand="ctrl-h" positionCommand="ctrl-m"></ngrx-store-log-monitor>-->
+
+<div class="frame">
+  <!--<div class="modal">-->
+  <!--&lt;!&ndash;This .modal will likely need to be provided by a modal library so this is FPO&ndash;&gt;-->
+  <!--<config-advanced></config-advanced>-->
+  <!--</div>-->
+  <!--<div class="modal-bkg">-->
+  <!--&lt;!&ndash;Again, This .modal-bkg will likely need to be provided by a modal library so this is FPO&ndash;&gt;-->
+  <!--</div>-->
+  <!--<navigation [loginModal]="loginModal"></navigation>-->
+  <!--<div [ngSwitch]="deviceType" class="frame__main">-->
+  <div class="frame__main">
+    <!--<sidebar></sidebar>-->
+    <!--<div [ngSwitch]="deviceType" class="frame__main">-->
+    <!--    <sy-selected-device *ngSwitchCase="'SymplyRAID'"  [device]="selectedDevice$ | async"></sy-selected-device>
+        <sy-selected-symplypro-device *ngSwitchCase="'SymplyPRO'" [device]="selectedDevice$ | async"></sy-selected-symplypro-device>
+        <sy-selected-symplypro-device *ngSwitchCase="'SymplyUltra'" [device]="selectedDevice$ | async"></sy-selected-symplypro-device>-->
+    <p>I am in the Sidebar</p>
+  </div>
+
+  <!--  <modal #softwareUpdateModal>
+      <software-update [softwareUpdateModal]="softwareUpdateModal" [appUpdateInfo]="appUpdateInfo"></software-update>
+    </modal>
+
+    <modal #loginModal [keyboard]="false" [backdrop]="'static'">
+      <sy-go-login [loginModal]="loginModal"></sy-go-login>
+    </modal>
+
+    <modal #aboutSymplyGOModal>
+      <sy-about-dlg [aboutSymplyGOModal]="aboutSymplyGOModal"></sy-about-dlg>
+    </modal>
+
+    <modal #eulaModal [keyboard]="false" [backdrop]="'static'">
+      <sy-eula-modal [eulaModal]="eulaModal"></sy-eula-modal>
+    </modal>-->
+
+  <!--<simple-notifications></simple-notifications>-->
+
+</div>

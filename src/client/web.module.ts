@@ -22,6 +22,9 @@ import { AnalyticsModule } from './app/modules/analytics/index';
 import { MultilingualModule, Languages, translateLoaderFactory, MultilingualEffects } from './app/modules/i18n/index';
 import { SampleModule, SampleEffects } from './app/modules/sample/index';
 import { AppReducer } from './app/modules/ngrx/index';
+import {WinAppComponent} from "./app/shared/win.app.component";
+import {MainComponent} from "./app/shared/main/main.component";
+
 
 // config
 Config.PLATFORM_TARGET = Config.PLATFORMS.WEB;
@@ -88,6 +91,8 @@ if (String('<%= BUILD_TYPE %>') === 'dev') {
     DEV_IMPORTS,
   ],
   declarations: [
+    WinAppComponent,
+    MainComponent,
     APP_COMPONENTS
   ],
   providers: [
@@ -101,7 +106,7 @@ if (String('<%= BUILD_TYPE %>') === 'dev') {
       useValue: Config.GET_SUPPORTED_LANGUAGES()
     }
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [WinAppComponent]
 })
 
 export class WebModule { }
