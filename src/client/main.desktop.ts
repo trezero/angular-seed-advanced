@@ -34,6 +34,19 @@ app.on('window-all-closed', () => {
   }
 });
 
+// ---------- WIN Functions Start ----------
+function exitApp(){
+  const {app} = require('electron');
+  app.quit();
+}
+
+exports.exitApp = exitApp;
+
+
+// ---------- WIN Functions END ----------
+
+// Default from seed is below
+
 app.on('ready', () => {
 
   // Initialize the window to our specified dimensions

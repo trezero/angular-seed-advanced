@@ -1,5 +1,6 @@
 import { join } from 'path';
 import { SeedAdvancedConfig } from './seed-advanced.config';
+import {ExtendPackages} from "./seed.config.interfaces";
 // import { ExtendPackages } from './seed.config.interfaces';
 
 /**
@@ -9,14 +10,33 @@ import { SeedAdvancedConfig } from './seed-advanced.config';
 export class ProjectConfig extends SeedAdvancedConfig {
 
   PROJECT_TASKS_DIR = join(process.cwd(), this.TOOLS_DIR, 'tasks', 'project');
-  
+
   constructor() {
     super();
-    // this.APP_TITLE = 'Put name of your app here';
+
+    this.APP_TITLE = 'WIN Tools';
     // this.GOOGLE_ANALYTICS_ID = 'Your site's ID';
 
     /* Enable typeless compiler runs (faster) between typed compiler runs. */
     // this.TYPED_COMPILE_INTERVAL = 5;
+
+    let additionalPackages: ExtendPackages[] = [
+      {
+        name: '@ng-bootstrap',
+        // Path to the package's bundle
+        path: 'node_modules/@ng-bootstrap/ng-bootstrap'
+      },
+      {
+        name: 'angular2-notifications',
+        // Path to the package's bundle
+        path: 'node_modules/angular2-notifications'
+      }
+    ];
+
+
+    this.addPackagesBundles(additionalPackages);
+
+
 
     // Add `NPM` third-party libraries to be injected/bundled.
     this.NPM_DEPENDENCIES = [

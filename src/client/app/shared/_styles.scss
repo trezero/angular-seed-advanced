@@ -1,0 +1,174 @@
+// Ian's Color Stack
+// except none of them render correctly in chromium so these are eyeball adjusted
+
+$symplygrn1: #3cd60c;
+$symplygrn2: #32b167;
+
+$appbg: #1f1f1f;
+
+$appfg: #181818;
+// $appfg: #161616;
+
+$menubg: #454545;
+// $menubg: #474747;
+
+$textlight: #757575;
+$textlightest: #9F9F9F;
+$textwhite: #c0c0c0;
+$dividercolor: #0e0e0e;
+
+// New App Layout Variables
+$focuspanelwidth: 1024px;
+$menubarheight: 24px;
+$hamburgerwidth: 16px;
+$menubaritemheight: 16px;
+$avatarimgwidth: 60px;
+$seashellwidth: 5px;
+$focusbarheight: 200px;
+$transparent:   rgba(0, 0, 0, 0);
+$transparentselected: rgba(0, 0, 0, .2);
+// $appwidth: 1540px;
+// $appheight: 675px;
+
+
+// brutal bg color reset to see the cool transparency
+html, body, sidebar, .desktop, .web, .frame__main, .overview, .scroll-region, .tabs-symplypro, .wrapper { background-color: $transparent!important; }
+
+// equally brutal selected transparency change
+.device-row--selected { background-color: $transparentselected; }
+
+.title {
+  font-weight: 300;
+  font-size: 24px;
+  color: #32b167;
+  margin-bottom: 40px;
+}
+
+
+// Globals
+body { background-color: $transparent; color: $textlight; font-size: 14px; }
+
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background-color: $appfg; }
+::-webkit-scrollbar-thumb { background-color: $textlight; border-radius: 3px; }
+
+// Utilities
+.vcenter { position: relative; top: 50%; transform: translateY(-50%);}
+.hcenter { position: relative; left: 50%; transform: translateX(-50%);}
+.ishadow { box-shadow: rgba(0, 0, 0, 0.3) 1px 2px 2px; }
+.iglowgreen { box-shadow: $symplygrn2 1px 2px 2px; }
+
+// Turn off Nasty Bootstrap 'Defaults' and set cool new ones
+
+*:hover {
+    outline: none!important;
+    outline-style: none!important;
+    // box-shadow: none!important;
+}
+
+*:active {
+    outline: none!important;
+    outline-style: none!important;
+    // box-shadow: none!important;
+}
+
+*:focus {
+    outline: none!important;
+    outline-style: none!important;
+    box-shadow: none!important;
+}
+
+// Global Color Variables
+$grey-96: #f6f6f6;
+$grey-85: #dbdbdb;
+$grey-82: #d3d2d3;
+$grey-71: #b7b7b7;
+$grey-60: #9b9b9b;
+$grey-49: #7d7b7b;
+$grey-45: #737373;
+$grey-38: #616161;
+$grey-29: #4a4a4a;
+$grey-26: #444;
+$grey-18: #303030;
+$grey-16: #2a2a2a;
+$white: #fff;
+$black: #000;
+$green: #66cc33;
+$green2: #57ae33;
+$green3: #468b31;
+$green4: #366c30;
+$green-hover: #4d9927;
+$green-active: #3a751e;
+$red: #b11f23;
+$yellow: #E6AF22;
+$blue: #39A4DC;
+$blue2: #387eb5;
+$blue3: #37649a;
+$blue4: #365085;
+$purple: #7853A2;
+$darkBlue: #19465D;
+$orange: #E87E30;
+$transparent: rgba(0, 0, 0, 0);
+$transparent-black-10: rgba(0, 0, 0, .1);
+$transparent-black-20: rgba(0, 0, 0, .2);
+$transparent-black-50: rgba(0, 0, 0, .5);
+$transparent-black-65: rgba(0, 0, 0, .65);
+$transparent-black-90: rgba(0, 0, 0, .9);
+
+// Disk Colors
+$disktintamt: 55%;
+$diskempty: #363636;
+$diskproxy: #929292;
+$diskused1: #62cdf9;
+$diskused2: #ce90e0;
+$diskused3: #edbe64;
+$diskused4: #6ef6b5;
+$diskused5: #9971ed;
+$diskused6: #5b86e6;
+
+//Global Mixins
+@mixin breakpoint($point) {
+  @if $point == xs {
+    @media (min-width: 767px) {
+      @content;
+    }
+  }
+  @if $point == sm {
+    @media (min-width: 768px) {
+      @content;
+    }
+  }
+  @if $point == md {
+    @media (min-width: 960px) {
+      @content;
+    }
+  } @else if $point == lg {
+    @media (min-width: 1200px) {
+      @content;
+    }
+  }
+}
+
+//TODO - extend to support native italic
+@mixin webfont($font) {
+  font-family: Roboto, Helvetica, Arial, sans-serif;
+
+  @if $font == roboto-thin {
+    font-weight: 100;
+  }
+  @if $font == roboto-light {
+    font-weight: 300;
+  }
+  @if $font == roboto-regular {
+    font-weight: 400;
+  }
+  @if $font == roboto-medium {
+    font-weight: 500;
+  }
+  @if $font == roboto-bold {
+    font-weight: 700;
+  }
+  @if $font == roboto-black {
+    font-weight: 900;
+  }
+}

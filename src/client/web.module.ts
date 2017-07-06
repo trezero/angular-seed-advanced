@@ -14,6 +14,7 @@ import { TranslateLoader } from '@ngx-translate/core';
 // app
 import { APP_COMPONENTS, AppComponent } from './app/components/index';
 import { routes } from './app/components/app.routes';
+import { WinAppComponent } from './app/shared/win.app.component';
 
 // feature modules
 import { WindowService, StorageService, ConsoleService, createConsoleTarget, provideConsoleTarget, LogTarget, LogLevel, ConsoleTarget } from './app/modules/core/services/index';
@@ -22,6 +23,11 @@ import { AnalyticsModule } from './app/modules/analytics/index';
 import { MultilingualModule, Languages, translateLoaderFactory, MultilingualEffects } from './app/modules/i18n/index';
 import { SampleModule, SampleEffects } from './app/modules/sample/index';
 import { AppReducer } from './app/modules/ngrx/index';
+import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
+
+import {SimpleNotificationsModule} from "angular2-notifications/src/simple-notifications.module";
+import {PushNotificationsModule} from "angular2-notifications/src/push-notifications.module";
+import {NotificationsService} from "angular2-notifications/src/notifications.service";
 
 // config
 Config.PLATFORM_TARGET = Config.PLATFORMS.WEB;
@@ -66,6 +72,10 @@ if (String('<%= BUILD_TYPE %>') === 'dev') {
 @NgModule({
   imports: [
     BrowserModule,
+    SimpleNotificationsModule,
+    PushNotificationsModule,
+    SimpleNotificationsModule,
+    NgbModule.forRoot(),
     CoreModule.forRoot([
       { provide: WindowService, useFactory: (win) },
       { provide: StorageService, useFactory: (storage) },
@@ -88,20 +98,22 @@ if (String('<%= BUILD_TYPE %>') === 'dev') {
     DEV_IMPORTS,
   ],
   declarations: [
-    APP_COMPONENTS
+    APP_COMPONENTS,
+    WinAppComponent
   ],
   providers: [
     {
       provide: APP_BASE_HREF,
       useValue: '<%= APP_BASE %>'
     },
+    NotificationsService,
     // override with supported languages
     {
       provide: Languages,
       useValue: Config.GET_SUPPORTED_LANGUAGES()
     }
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [WinAppComponent]
 })
 
 export class WebModule { }
